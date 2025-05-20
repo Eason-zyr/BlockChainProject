@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>智慧電表與碳足跡追蹤平台</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+</head>
+<body>
+    <h1>智慧電表與碳足跡追蹤系統</h1>
+
+    <div class="card">
+        <button onclick="connectWallet()">🔌 連接錢包</button>
+        <p id="walletAddress" class="status">尚未連接錢包</p>
+        <p id="welcomeMessage" class="status"></p> <!-- 新增這行 -->
+    </div>
+
+    <div class="card">
+        <h2>👤 註冊使用者</h2>
+        <input type="text" id="userName" placeholder="輸入使用者名稱">
+        <button onclick="registerUser()">註冊</button>
+    </div>
+
+    <div class="card">
+        <h2>⚡ 上傳電力使用量</h2>
+        <input type="number" id="energyInput" placeholder="輸入電量 (kWh)">
+        <button onclick="logEnergy()">提交</button>
+    </div>
+
+    <!-- 查詢碳排放 + 顯示統計資訊，合併為橫排 -->
+    <div style="display: flex; gap: 20px;">
+        <div class="card" style="flex: 1;">
+            <h2>🌱 查詢碳排放</h2>
+            <input type="text" id="queryAddress" placeholder="輸入地址查詢（可留空）">
+            <button onclick="getEmissions()">查詢碳排量</button>
+            <p id="emissionsResult" class="status"></p>
+        </div>
+
+        <div class="card" style="flex: 1;">
+            <h2>📊 查看總用電與平均值</h2>
+            <button onclick="showUserStats()">顯示統計資訊</button>
+            <p id="userStatsResult" class="status"></p>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔍 查詢歷史用電紀錄</h2>
+        <input type="text" id="historyAddress" placeholder="輸入地址">
+        <button onclick="getAllConsumption()">查詢</button>
+        <div id="historyResult"></div>
+    </div>
+
+    <div class="card">
+        <h2>🎁 領取獎勵</h2>
+        <button onclick="claimReward()" class="claim-btn">領取 0.01 ETH</button>
+        <p id="rewardResult" class="status"></p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
